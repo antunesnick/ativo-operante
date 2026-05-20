@@ -42,4 +42,10 @@ public class Denuncia {
     @JoinColumn(name = "usu_id")
     private Usuario usuario;
 
+    @OneToOne(mappedBy = "denuncia")
+    private Feedback feedback;
+
+    @Column(name = "den_foto")
+    private String foto;
+
 }

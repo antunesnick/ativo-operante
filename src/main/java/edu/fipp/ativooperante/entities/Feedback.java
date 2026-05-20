@@ -1,5 +1,6 @@
 package edu.fipp.ativooperante.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class Feedback {
     @Column(name = "fee_texto")
     private String texto;
 
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "den_id")
     private Denuncia denuncia;

@@ -13,13 +13,13 @@ import java.util.Date;
 public class JwtUtil {
 
     private static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-    // Tempo de expiração: 2 horas
-    private static final long EXPIRATION_TIME = 7200000;
+    // Tempo de expiração: 15 minutos
+    private static final long EXPIRATION_TIME = 900000;
 
     public String generateToken(String email, int nivel) {
         return Jwts.builder()
                 .setSubject(email)
-                .claim("nivel", nivel) // Guardamos o nível (1=Admin, 0=Cidadão) no token
+                .claim("nivel", nivel) // Guarda o nível (1=Admin, 2=Cidadão) no token
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SECRET_KEY)
